@@ -110,6 +110,12 @@ faster than normal popularly known sync APIs.
 6. Application enchrished with logging to aid in debugging but limited implimentation was ascertained as
    just for the scope of this mini project.
 7. Unit and Integration test available for roburstness and proper application understanding and management.
+8. the test required fetching list of transaction without putting in place further consideration, I have built the API to accommodate
+fetch by pagination for elasticity and proper API load managment. additional Optional key to the API is 
+
+RequestParam (Integer)
+** pageNo
+** size
 ```
 
 
