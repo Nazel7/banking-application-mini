@@ -1,0 +1,41 @@
+server:
+  port: ${PORT:40}
+
+spring:
+  application:
+    version: @project.version@
+    description: @project.description@
+    bank-code: 000012
+  mvc:
+    servlet:
+      path: /apis/decagon-bank
+  datasource:
+    url: jdbc:h2:mem:decagonbankDB
+    username: password
+    password: password
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+#    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    topic: decagon-notification-ex-out
+    queue: decagon-notification-queue
+    routekey: decagon-notification-key-out
+
+transaction:
+  tranfer_fail: Transaction fail, please try again. Thank you for banking with us
+  transfer_successful: Transaction is successful
+
+page:
+  custom-size: 20

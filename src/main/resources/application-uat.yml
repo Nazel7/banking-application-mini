@@ -1,0 +1,43 @@
+server:
+  port: ${PORT:40}
+
+spring:
+  application:
+    version: @project.version@
+    description: @project.description@
+    bank-code: ${BANK_CODE}
+  mvc:
+    servlet:
+      path: /apis/decagon-bank
+  datasource:
+    url: ${h2_URL}
+    username: ${h2_USERNAME}
+    password: ${h2_PASSWORD}
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    #    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  rabbitmq:
+    host: localhost
+    port: ${RABBITMQ_PORT:56}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+    topic: ${RABBITMQ_EXCHANGE}
+    queue: ${RABBITMQ_QUEUE}
+    routekey: ${RABBITMQ_ROUTE_KEY}
+
+
+transaction:
+  tranfer_fail: ${FAIL_TRANSACTION_MESSAGE}
+  transfer_successful: ${SUCCESS_TRANSACTION_MESSAGE}
+
+
+page:
+  custom-size: 20
