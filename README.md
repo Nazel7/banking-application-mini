@@ -8,15 +8,14 @@
 ```
 2. Navigate to the project directory and follow the step below
 
+### Build project
+```
+./mvnw clean install
+```
 ### Run the Test cases
 ```
 ./mvnw test
 
-```
-
-### Build project
-```
-./mvnw clean install
 ```
 ### Run on Docker
 
