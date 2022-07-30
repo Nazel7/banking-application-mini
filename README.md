@@ -91,7 +91,7 @@ over-emphasized as it promote team building and collaboration.
 For me, what I look for in code review are but not limited to the following:
 1. Application structure like naming convention, and package structure. I believe it is not only writing good code but also these play a big role in application long-term management.
 Why do you need to mixed your business logic with your controller class? definately your application will be very difficult to test and manage because it is not adheing to seperation of concern or SOLID principle. 
-Start from there to write SOLID code, attraction is beautify.
+Start from there to write SOLID code, abstraction is beautify.
 2. Miss-used of datastructure even annotations: "why do you need to use a long-list and complicated if-else statement when there are posible options to use Switch statements". 
 Because your code will actually scan through all those if statement whereas switch-statement use jump-table to locate your result.
 3. Memory-management.
