@@ -6,62 +6,99 @@
  git clone https://github.com/Nazel7/banking-transaction-system.git
 
 ```
+2. Navigate to the project directory and follow the step below
 
-2. Setup Postgresql Database
+### Run the Test cases
+```
+./mvnw test
 
-3. SetUp JWT secret 
+```
 
-4. All properties in the Environment variable below
+### Build project
+```
+./mvnw clean install
+```
+### Run on Docker
 
-## Run as Docker image
-
-You can also run as a docker image 
-but will need to run posgresql as a standalone image and setup properties 
-directly in application.yml file.
+1. build the image
+```
+docker build -t bnk-dk-02:lastest .
+```
+2. instantiate image container on port 4000
+```
+docker run -p 4000:4001 docker.io/library/bnk-dk-02:lastest
+```
 
 ## URL to APis collections:
 ```
-https://www.getpostman.com/collections/93342828ceaaa2cdd8a1
+bank_base_url_d: http://localhost:4000/apis/decagon-bank/
 
-```
-## SAMPLE ENV VARIABLE
-
-```
-RABBITMQ_EXCHANGE=sankore-notification-ex-out
-RABBITMQ_ROUTE_KEY=sankore-notification-key-out
-RABBITMQ_PASSWORD=guest
-RABBITMQ_USERNAME=guest
-RABBITMQ_QUEUE=sankore-notification-queue
-POSTGRE_URL=jdbc:postgresql://localhost:5432/sankore_transaction_service
-POSTGRE_USERNAME=postgres
-POSTGRE_PASSWORD=mkb-password
-PORT:80=8088
-RABBITMQ_PORT:56=5672
-JWT_SECRET=$2a$10$poqgI6yBmhiTAnacv/.tv.DzczAg.efmg.zlXIagMPhZ3M.OVDip2
-FAIL_TRANSACTION_MESSAGE=Transaction fail, please try again. Thank you for banking with us
-SUCCESS_TRANSACTION_MESSAGE=Transaction is successful
-BANK_CODE=000012
-INVESTMENT_SCHEDULER=* 0 */25 * * *
-INVESTMENT_ACTIVATION_SCHEDULER=* 0 */24 * * *
+postman_collection: https://www.getpostman.com/collections/d19c6a94c0166fcf0d29
 ```
 
-## RUN RABBITMQ IMAGE
+## Run RabbitMQ for the notification capability on transactions in the application
 ```
 $ docker run -d -p 15672:15672 -p 5672:5672 rabbitmq:3-management-alpine
 ```
-## BUILD IMAGE
+
+# Writing
+1. My Experience with core banking
+```
+I have extensive experience working in the Fintech companies and building Digigal banking solutions working in the bank.
+I have worked in places like Mikro.africa, Stanbic IBTC bank, Mkobo Micro finance bank as well as investment company which directly and indirectly impacted many based on feedbacks. 
+I have consulted for foreign companies like Pericius, India / Tecnotree, Finland building their SAAS application with high profile clients
+using this solution.
+
+In recent time, solutions I have built from scratch are not limited to the following;
+1. Transaction service processing different kind of transactions with advance even-driven architecture
+2. Web service Application for Inter-bank transaction processing
+3. Hybrid BVN service for BVN verification.
+4. SAAS SDk for Digital Contract management.
+
+My current role span through vendor interfacing, training developers and managing processes on bankend engineering
+```
+2. List of my 5 top Security Best Practises
+```
+1.  Use strong encryption and hashing algorithms
+2.  Centralize logging and monitoring and in general use good library and keep it simple
+3.  Handle sensitive data with care like using Payload validations
+4.  Avoid keeping plain-test of sensitive data in your properties file. 
+5.  USe API-Key and validation to grant difference user access and build application having scalability in mind.
+```
+
+3. Experience in Enterprise Software Architecture
 
 ```
-Run on project directory in Order below
-Supply the environment variable for direct access if running through command line
-or setup env while the application can package with the env at runtime. if on intellij 
-supply the environment in your environment variable and just click the run button after setting the profile.
+I have experience in some of the software architecture such as Event-driven Artitecture design pattern,
+microservices design, Domain-driven design. Software Architecture simply means a template for building your application at high level,
+it aims to build resilience, scalable and easy to manage application. Some of these architectures might overlapps.
+Sometimes there might not be clear distinction on using them seperately but surely there are best use cases for all.
 
-NOTE: Each (application-[OPTION].yml ) file stands for different environment. Default is dev
-
-1. ./mvnw spring-boot:run
-
-2. $ ./mvnw clean install -DskipTests
-
-3. $ docker build -t bank-service:latest .
+Microservices is excellent, but not good for every scenerio like using it in a startup company as they might face delima in managing it at the long run.
+Microservices is good for a large establishment that want to simulate it business process to be a company-in-the-box mang,aing different kind of bounded-contexts.
+whereas if a Startup company not using microservice but their services must be designed having microservices in mind
+like adopting extensively Event-driven artecture for building loosely-coupled applications. 
+There are many use cases for software architecture but the baseline is building a roburst, scalable, manageable and testable application.
 ```
+
+4. Code Review: my take
+```
+Code review adoption is very important in maintaining code qualities.
+Even using software like Sonarqube for code quality but direct human intervention and interaction in code review cannot be 
+over-emphasized as it promote team building and collaboration.
+
+For me, what I look for in code review are but not limited to the following:
+1. Application structure like naming convention, and package structure. I believe it is not only writing good code but also these play a big role in application long-term management.
+Why do you need to mixed your business logic with your controller class? definately your application will be very difficult to test and manage because it is not adheing to seperation of concern or SOLID principle. 
+Start from there to write SOLID code, attraction is beautify.
+2. Miss-used of datastructure even annotations: "why do you need to use a long-list and complicated if-else statement when there are posible options to use Switch statements". 
+Because your code will actually scan through all those if statement whereas switch-statement use jump-table to locate your result.
+3. Memory-management.
+5. logging and commenting techniques: most developer have forgotten logging and commenting processes is part of software developement, why do you need to make your code complicated for other people when you can document your process.
+6. documentation and test. 
+```
+
+
+
+
+

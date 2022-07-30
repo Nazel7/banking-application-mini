@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -97,6 +98,16 @@ public class TransactionController {
         final Account account = mTransactionService.getTransactionHistory(accountId, pageNo, size, request);
 
         return CompletableFuture.completedFuture(new ResponseEntity<>(account, HttpStatus.OK));
+    }
+
+    @Async
+    @CrossOrigin
+    @ApiOperation(value = "::: Get Transactions :::", notes = "Api for quick account liquidity")
+    @GetMapping
+    public CompletableFuture<?> getTransactions()
+            throws TransferNotValidException {
+
+        return CompletableFuture.completedFuture(new ResponseEntity<>("::: Welcome to Decagon-Gafar-Bank", HttpStatus.OK));
     }
 
 
