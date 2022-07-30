@@ -3,7 +3,7 @@
 
 1. Clone Project from Github
 ```
- git clone https://github.com/Nazel7/banking-transaction-system.git
+ git clone https://github.com/Nazel7/banking-application-mini.git
 
 ```
 2. Navigate to the project directory and follow the step below
@@ -61,7 +61,8 @@ My current role span through vendor interfacing, training developers and managin
 ```
 1.  Use strong encryption and hashing algorithms
 2.  Centralize logging and monitoring and in general use good library and keep it simple
-3.  Handle sensitive data with care like using Payload validations
+3.  Handle sensitive data with care like using Payload validations, keep sesnitive data on secret not on config using k8s or if not 
+    externalized it by keeping it in vault like harshicorp vault.
 4.  Avoid keeping plain-test of sensitive data in your properties file. 
 5.  USe API-Key and validation to grant difference user access and build application having scalability in mind.
 ```
@@ -98,6 +99,19 @@ Because your code will actually scan through all those if statement whereas swit
 6. documentation and test. 
 ```
 
+5. A quick dive into the mini project architecture
+```
+1. Async API was built to auto concurrency and thread was managed inteernally. this is about 4 times 
+faster than normal popularly known sync APIs.
+2. Application decouply following SOLID principles and using alot of factory pattern for seperation of concern and also 
+   builder pattern and lombok was also used for pojo enrichment with hibernate validation and type52 for schema enrichement i.e no traditional setter and getter 
+   and bean management made easy.
+3. final keyword was used where necessary for a little bit faster variable processing this is also for request encrichement.
+5. Error first check strategy was used for faster operations; "why do I need to continue request velocity when the payload is invalid?"
+6. Application enchrished with logging to aid in debugging but limited implimentation was ascertained as
+   just for the scope of this mini project.
+7. Unit and Integration test available for roburstness and proper application understanding and management.
+```
 
 
 
