@@ -88,7 +88,7 @@ public class TransactionController {
     @Async
     @CrossOrigin
     @ApiOperation(value = "::: Get Transactions :::", notes = "Api for quick account liquidity")
-    @PutMapping
+    @GetMapping
     public CompletableFuture<ResponseEntity<Account>> getTransactions(@RequestParam(value = "accountId", required = false) String accountId,
                                                                       @RequestParam(value = "pageNo", defaultValue = "1", required = false) Integer pageNo,
                                                                       @RequestParam(value = "size", defaultValue = "30", required = false) Integer size,
@@ -103,7 +103,7 @@ public class TransactionController {
     @Async
     @CrossOrigin
     @ApiOperation(value = "::: Get Transactions :::", notes = "Api for quick account liquidity")
-    @GetMapping
+    @GetMapping("/health")
     public CompletableFuture<?> getTransactions()
             throws TransferNotValidException {
 

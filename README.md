@@ -10,7 +10,7 @@
 
 ### Build project
 ```
-./mvnw clean install
+./mvnw clean install -DskipTests
 ```
 ### Run the Test cases
 ```
@@ -25,7 +25,7 @@ docker build -t bnk-dk-02:lastest .
 ```
 2. instantiate image container on port 4000
 ```
-docker run -p 4000:4001 docker.io/library/bnk-dk-02:lastest
+docker run -p 4000:4000 docker.io/library/bnk-dk-02:lastest
 ```
 
 ## URL to APis collections:
