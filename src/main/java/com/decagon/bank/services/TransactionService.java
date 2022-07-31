@@ -456,6 +456,7 @@ public class TransactionService {
     }
 
     private String getLoginToken(HttpServletRequest request) {
+
         // This could be highly useful if authentication is put in place,
         // but for the purpose of this test I just put how it might be useful
         String token = request.getHeader("Authorization");
